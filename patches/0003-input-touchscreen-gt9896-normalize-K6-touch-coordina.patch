@@ -1,0 +1,41 @@
+From bb57906ce450930a9c71ae907985bf56bb06e0e7 Mon Sep 17 00:00:00 2001
+From: mimusabturkmen <mimusabturkmen@gmail.com>
+Date: Tue, 7 Jul 2026 01:26:17 +0300
+Subject: [PATCH 3/3] input: touchscreen: gt9896: normalize K6 touch
+ coordinates
+
+---
+ drivers/input/touchscreen/gt9896/goodix_ts_i2c.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/input/touchscreen/gt9896/goodix_ts_i2c.c b/drivers/input/touchscreen/gt9896/goodix_ts_i2c.c
+index 00eb7579bde0..893cdd294459 100644
+--- a/drivers/input/touchscreen/gt9896/goodix_ts_i2c.c
++++ b/drivers/input/touchscreen/gt9896/goodix_ts_i2c.c
+@@ -1428,6 +1428,11 @@ static void goodix_parse_finger_nor(struct goodix_ts_device *dev,
+ 		x = le16_to_cpup((__be16 *) (coor_data + 1));
+ 		y = le16_to_cpup((__be16 *) (coor_data + 3));
+ 		w = coor_data[5];
++#ifdef CONFIG_TOUCHSCREEN_GOODIX_GTX9896_K6
++		/* K6 firmware reports coordinates in 3-bit fixed-point units. */
++		x >>= 3;
++		y >>= 3;
++#endif
+ 		goodix_swap_coords(dev, &x, &y);
+ 		touch_data->coords[id].status = TS_TOUCH;
+ 		touch_data->coords[id].x = x;
+@@ -1491,6 +1496,11 @@ static void goodix_parse_finger_ys(struct goodix_ts_device *dev,
+ 		x = be16_to_cpup((__be16 *)(coor_data + 2));
+ 		y = be16_to_cpup((__be16 *)(coor_data + 4));
+ 		w = be16_to_cpup((__be16 *)(coor_data + 6));
++#ifdef CONFIG_TOUCHSCREEN_GOODIX_GTX9896_K6
++		/* K6 firmware reports coordinates in 3-bit fixed-point units. */
++		x >>= 3;
++		y >>= 3;
++#endif
+ 		goodix_swap_coords(dev, &x, &y);
+ 		touch_data->coords[id].status = TS_TOUCH;
+ 		touch_data->coords[id].x = x;
+-- 
+2.43.0
+

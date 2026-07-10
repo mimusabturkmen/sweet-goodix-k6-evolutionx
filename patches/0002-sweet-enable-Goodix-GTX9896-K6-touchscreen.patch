@@ -1,0 +1,25 @@
+From f56358aa4ece3059de42206e9a9df69019e4bf50 Mon Sep 17 00:00:00 2001
+From: mimusabturkmen <mimusabturkmen@gmail.com>
+Date: Sat, 4 Jul 2026 16:04:39 +0300
+Subject: [PATCH 2/3] sweet: enable Goodix GTX9896 K6 touchscreen
+
+---
+ arch/arm64/configs/vendor/sweet.config | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/configs/vendor/sweet.config b/arch/arm64/configs/vendor/sweet.config
+index 285ae3cfc2ca..fb64fbfa7848 100644
+--- a/arch/arm64/configs/vendor/sweet.config
++++ b/arch/arm64/configs/vendor/sweet.config
+@@ -65,7 +65,7 @@ CONFIG_CMDLINE="cgroup_disable=pressure ramoops_memreserve=4M"
+ CONFIG_TI_DRV8846=y
+ 
+ # Touchscreen
+-CONFIG_TOUCHSCREEN_GOODIX_GTX9896_I2C=y
++CONFIG_TOUCHSCREEN_GOODIX_GTX9896_K6=y
+ CONFIG_TOUCHSCREEN_FTS_K6=y
+ CONFIG_TOUCHSCREEN_XIAOMI_TOUCHFEATURE=y
+ CONFIG_NEW_TOUCH_GAMEMODE=y
+-- 
+2.43.0
+
