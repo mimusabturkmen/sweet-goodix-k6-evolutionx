@@ -29,10 +29,6 @@ Working:
   - `x >>= 3`
   - `y >>= 3`
 
-## Important notes
-
-Do not flash Magisk as a recovery ZIP on this build. In testing, Magisk 30.7 recovery flash caused grey/black screen behavior. If root is needed, use Magisk APK boot.img patch method and keep the clean boot.img available for recovery.
-
 ## Files not included
 
 This repository does not include:
