@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+    <remote name="github-direct" fetch="https://github.com/" />
+
+    <remote
+        name="mim-github"
+        fetch="https://github.com/" />
+
+    <!-- Redmi Note 10 Pro device tree -->
+    <project
+        name="Evolution-X-Devices/device_xiaomi_sweet"
+        path="device/xiaomi/sweet"
+        remote="github-direct"
+        revision="bka" />
+
+    <!-- SM6150 common device tree -->
+    <project
+        name="LineageOS/android_device_xiaomi_sm6150-common"
+        path="device/xiaomi/sm6150-common"
+        remote="github-direct"
+        revision="lineage-23.2" />
+
+    <!-- Proprietary blobs -->
+    <project
+        name="TheMuppets/proprietary_vendor_xiaomi_sweet"
+        path="vendor/xiaomi/sweet"
+        remote="github-direct"
+        revision="lineage-23.2" />
+
+    <project
+        name="TheMuppets/proprietary_vendor_xiaomi_sm6150-common"
+        path="vendor/xiaomi/sm6150-common"
+        remote="github-direct"
+        revision="lineage-23.2" />
+
+    <!-- Base kernel; Goodix K6 patchleri uygulanacak -->
+    <project
+        name="mimusabturkmen/android_kernel_xiaomi_sm6150"
+        path="kernel/xiaomi/sm6150"
+        remote="mim-github"
+        revision="final/goodix-k6-evolutionx" />
+
+    <!-- Xiaomi hardware components -->
+    <project
+        name="Evolution-X-Devices/hardware_xiaomi"
+        path="hardware/xiaomi"
+        remote="github-direct"
+        revision="bka" />
+
+</manifest>
