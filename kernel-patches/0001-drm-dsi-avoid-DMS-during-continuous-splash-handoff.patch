@@ -1,0 +1,27 @@
+From 3e52bfee77f9f8d82ba06bb4b227f3c85a46d1c4 Mon Sep 17 00:00:00 2001
+From: mimusabturkmen <mimusabturkmen@gmail.com>
+Date: Sat, 11 Jul 2026 15:22:33 +0300
+Subject: [PATCH] drm: dsi: avoid DMS during continuous splash handoff
+
+---
+ drivers/gpu/drm/msm/dsi-staging/dsi_drm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/msm/dsi-staging/dsi_drm.c b/drivers/gpu/drm/msm/dsi-staging/dsi_drm.c
+index 478eeef8cb52..d8ad0417577e 100644
+--- a/drivers/gpu/drm/msm/dsi-staging/dsi_drm.c
++++ b/drivers/gpu/drm/msm/dsi-staging/dsi_drm.c
+@@ -563,8 +563,8 @@ static bool dsi_bridge_mode_fixup(struct drm_bridge *bridge,
+ 			(!(dsi_mode.dsi_mode_flags & DSI_MODE_FLAG_VRR)) &&
+ 			(!(dsi_mode.dsi_mode_flags & DSI_MODE_FLAG_POMS)) &&
+ 			(!(dsi_mode.dsi_mode_flags & DSI_MODE_FLAG_DYN_CLK)) &&
+-			(!crtc_state->active_changed ||
+-			 display->is_cont_splash_enabled))
++			!crtc_state->active_changed &&
++			!display->is_cont_splash_enabled)
+ 			dsi_mode.dsi_mode_flags |= DSI_MODE_FLAG_DMS;
+ 
+ 		/* Reject seemless transition when active/connectors changed.*/
+-- 
+2.43.0
+
