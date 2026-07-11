@@ -36,3 +36,16 @@ causing controller reset, kickoff and display corruption failures.
 - K6 OFF commands in LP mode
 - Boot animation changes
 - Gamma target-mode experiment
+
+## Magisk compatibility
+
+Verified working.
+
+- Installed through OrangeFox recovery
+- Root access confirmed with `su -c id`
+- System reboot tests passed
+- Cold boot tests passed
+- No display corruption or black-screen regression observed
+
+The earlier display failures initially attributed to Magisk were caused by
+the continuous-splash DMS handoff bug.
